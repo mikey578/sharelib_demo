@@ -1,5 +1,5 @@
 @Library('my-shared-lib') _
-
+def jobUrl = "${env.BUILD_URL}"
 pipeline {
     agent any
 
