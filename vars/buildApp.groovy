@@ -1,7 +1,7 @@
 def call(Map config = [:]) {
     stage('Build') {
         echo "Building ${config.appName ?: 'application'}..."
-        sh 'echo 123'  // hoặc npm/yarn/mvn tùy tech stack
+        sh 'date;sleep 5s;date'  // hoặc npm/yarn/mvn tùy tech stack
     }
 }
 
