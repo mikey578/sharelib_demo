@@ -29,10 +29,10 @@ pipeline {
     }
    post {
         success {
-            notifyTelegram("✅ *Build Success!* for `payment-service`")
+            notifyTelegram("✅ Build Passed: [See job](${jobUrl})")
         }
         failure {
-            notifyTelegram("❌ *Build Failed!* for `payment-service`")
+            notifyTelegram("❌ Build Failed!* [See job](${jobUrl})")
         }
     }
 
