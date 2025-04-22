@@ -27,5 +27,14 @@ pipeline {
             }
         }
     }
+   post {
+        success {
+            notifyTelegram("✅ *Build Success!* for `payment-service`")
+        }
+        failure {
+            notifyTelegram("❌ *Build Failed!* for `payment-service`")
+        }
+    }
+
 }
 
