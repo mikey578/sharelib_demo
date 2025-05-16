@@ -1,9 +1,9 @@
 @Library('my-shared-lib')
 
-ciPipeline(
+ciPipeline([
     language: 'java',
     project:  'p123',
     env: 'dev',
     ciServer: 'yes'
-    )
+    ])
 
