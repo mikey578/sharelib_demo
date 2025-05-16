@@ -14,7 +14,6 @@ def call(Map config = [:]) {
                     echo "Language: ${config.language}"
                     echo "Project: ${config.project}"
                     script {
-                        checkoutByTag(repoUrl, tag, String credentialsId = 'default-cred')
                         if (config.language == 'java') {
                             buildJava(config)
                         } else if (config.language == 'php') {
@@ -22,7 +21,7 @@ def call(Map config = [:]) {
                         } else {
                             error "Unsupported language: ${config.language}"
                         }
-                    
+                    }
                 }
             }
             stage('Push to s3/ecr/arifact') {
@@ -63,14 +62,4 @@ def call(Map config = [:]) {
             }
         }
     }
-}
-def checkoutByTag(String repoUrl, String tag, String credentialsId = 'default-cred') {
-    checkout([
-        $class: 'GitSCM',
-        branches: [[name: "refs/tags/${tag}"]],
-        userRemoteConfigs: [[
-            url: repoUrl,
-            credentialsId: credentialsId
-        ]]
-    ])
 }
