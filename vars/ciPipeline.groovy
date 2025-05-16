@@ -74,4 +74,3 @@ def checkoutByTag(String repoUrl, String tag, String credentialsId = 'default-cr
         ]]
     ])
 }
-
