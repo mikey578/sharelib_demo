@@ -1,15 +1,16 @@
 def call(Map config = [:]) {
-    echo "Language: ${config.language}"
-    echo "Project: ${config.project}"
-    echo "Env: ${config.env}"
-    echo "CI Server: ${config.ciServer}"
+    
     pipeline {
         agent none
 
         stages {
             stage('Build') {
                 agent {label 'build'}
-                steps {    
+                steps { 
+                    echo "Language: ${config.language}"
+                    echo "Project: ${config.project}"
+                    echo "Env: ${config.env}"
+                    echo "CI Server: ${config.ciServer}"   
                     echo "Language: ${config.language}"
                     echo "Project: ${config.project}"
                     script {
