@@ -8,6 +8,8 @@ def call(Map config = [:]) {
             stage('Build') {
                 agent {label 'build'}
                 steps {    
+                    echo "Language: ${config.language}"
+                    echo "Project: ${config.project}"
                     script {
                         checkoutByTag(repoUrl, tag, String credentialsId = 'default-cred')
                         if (config.language == 'java') {
