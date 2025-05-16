@@ -45,10 +45,10 @@ def call(Map config = [:]) {
                 steps {    
                     script {
                         sh 'echo "download source from repository"'
-                        sh 'generation configuration'
-                        sh 'restart services'
-                        sh 'healcheck function'
-                        sh 'update proxy'
+                        sh 'echo "generation configuration"'
+                        sh 'echo "restart services"'
+                        sh 'echo "healcheck function"'
+                        sh 'echo "update proxy"'
                     }
                 }
             }
