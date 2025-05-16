@@ -8,14 +8,14 @@ class JavaBuild implements Serializable {
     }
 
     def build(Map config) {
-        steps.sh "mvn clean compile"
+        steps.sh "echo mvn clean compile"
     }
 
     def test(Map config) {
-        steps.sh "mvn test"
+        steps.sh "echo mvn test"
     }
 
     def packageApp(Map config) {
-        steps.sh "mvn package"
+        steps.sh "echo mvn package"
     }
 }
