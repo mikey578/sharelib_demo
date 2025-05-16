@@ -1,11 +1,11 @@
 def call(Map config = [:]) {
     
     pipeline {
-        agent none
+        agent any
 
         stages {
             stage('Build') {
-                agent {label 'build'}
+             //   agent {label 'build'}
                 steps { 
                     echo "Language: ${config.language}"
                     echo "Project: ${config.project}"
@@ -25,7 +25,7 @@ def call(Map config = [:]) {
                 }
             }
             stage('Push to s3/ecr/arifact') {
-                agent {label 'build'}
+               // agent {label 'build'}
                 steps {    
                     script {
                         sh 'echo "Push code"'
@@ -33,7 +33,7 @@ def call(Map config = [:]) {
                 }
             }
             stage('update upstream proxy') {
-                agent {label 'build'}
+               // agent {label 'build'}
                 steps {    
                     script {
                         sh 'echo "canary deployment"'
@@ -41,7 +41,7 @@ def call(Map config = [:]) {
                 }
             }
             stage('deploy to prd server') {
-                agent {label 'build'}
+               // agent {label 'build'}
                 steps {    
                     script {
                         sh 'echo "download source from repository"'
@@ -53,7 +53,7 @@ def call(Map config = [:]) {
                 }
             }
             stage('clean') {
-                agent {label 'build'}
+               // agent {label 'build'}
                 steps {    
                     script {
                         sh 'echo "clean"'
