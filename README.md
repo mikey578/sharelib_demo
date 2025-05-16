@@ -1,2 +1,3 @@
-# sharelib_demo
-# sharelib_demo
+# Jenkins Shared Library
+
+Supports Java and PHP projects.
