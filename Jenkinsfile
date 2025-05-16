@@ -1,3 +1,2 @@
-@Library('my-shared-lib')
-
+@Library('my-shared-lib') _
 ciPipeline()
