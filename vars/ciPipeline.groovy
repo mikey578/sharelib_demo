@@ -1,18 +1,12 @@
 def call(Map config = [:]) {
     
     pipeline {
-        agent any
+        agent agent-1
 
         stages {
             stage('Build') {
              //   agent {label 'build'}
                 steps { 
-                    echo "Language: ${config.language}"
-                    echo "Project: ${config.project}"
-                    echo "Env: ${config.env}"
-                    echo "CI Server: ${config.ciServer}"   
-                    echo "Language: ${config.language}"
-                    echo "Project: ${config.project}"
                     script {
                         if (config.language == 'java') {
                             buildJava(config)
@@ -62,4 +56,16 @@ def call(Map config = [:]) {
             }
         }
     }
+}
+def checkoutByTag(String repoUrl, String tag, String credentialsId = 'default-cred') {
+    checkout([
+        $class: 'GitSCM',
+        branches: [[name: "refs/tags/${tag}"]],
+        doGenerateSubmoduleConfigurations: false,
+        extensions: [],
+        userRemoteConfigs: [[
+            url: repoUrl,
+            credentialsId: credentialsId
+        ]]
+    ])
 }
