@@ -6,12 +6,10 @@ def call(Map config = [:]) {
         stages {
             stage('Build') {
              //   agent {label 'build'}
-                agent {
-                    docker { image 'maven:3.9.0' }
-                }
+                agent  {label 'agent-1'}
                 steps { 
                     script {
-                        docker.image('maven:3.9.0').inside('--rm') {
+                        
                             sh 'mvn version'
                         }
                     }
