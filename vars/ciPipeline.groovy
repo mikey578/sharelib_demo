@@ -8,12 +8,8 @@ def call(Map config = [:]) {
              //   agent {label 'build'}
                 steps { 
                     script {
-                        if (config.language == 'java') {
-                            buildJava(config)
-                        } else if (config.language == 'php') {
-                            buildPhp(config)
-                        } else {
-                            error "Unsupported language: ${config.language}"
+                        docker.image('maven:3.9.0').inside('--rm') {
+                            sh 'mvn version'
                         }
                     }
                 }
