@@ -13,7 +13,6 @@ def call(Map config = [:]) {
                             sh 'mvn version'
                         }
                     }
-                }
             }
             stage('Push to s3/ecr/arifact') {
                // agent {label 'build'}
